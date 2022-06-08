@@ -38,9 +38,9 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     }
     
     let filteredpath = await filterImageFromURL(image_url)
-    // deleteLocalFiles(filteredpath);
-    // I am having a problem with this part, it says "Argument of type 'string' is not assignable to parameter of type 'string[]'."
-
+    deleteLocalFiles([filteredpath]);
+    // The deleteLocalFiles([filteredpath]) is now working, but it deletes the file before the res.sendFile is finished. I have been trying to solve this but could not find a workable solution.
+    
     return res.sendFile(filteredpath);
     
   } );
